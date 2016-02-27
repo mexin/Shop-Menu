@@ -1,4 +1,4 @@
-angular.module('VintageMenu', ['ionic'])
+angular.module('VintageMenu', ['ionic','ngCart'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {

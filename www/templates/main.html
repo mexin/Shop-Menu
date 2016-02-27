@@ -1,48 +1,48 @@
 <ion-view view-title="Vintage Ejuice">
   <ion-content>
-      <div class="col-33 padding-bottom" collection-repeat="product in products | filter:{ categories: 'E-Juice' }">
-        <div class="list card">
+    <div class="col-33 padding-bottom" collection-repeat="product in products | filter:{ categories: 'E-Juice' } ">
+      <div class="list card">
 
-          <div class="item">
-            <h2>{{product.title}}</h2>
-            <p>${{product.price}}</p>
-          </div>
-
-          <div class="item item-image">
-            <img width="300px" height="300px" ng-src="{{product.featured_src}}">
-          </div>
-
-
-            <label class="item item-input item-select">
-              <div class="input-label">
-                Tamaño
-              </div>
-              <select>
-                <option>30ml</option>
-                <option>60ml</option>
-                <option>120ml</option>
-              </select>
-            </label>
-          <label class="item item-input item-select">
-            <div class="input-label">
-              Nivel de Nicotina
-            </div>
-            <select>
-              <option>0mg</option>
-              <option>3mg</option>
-              <option>6mg</option>
-              <option>12mg</option>
-              <option>18mg</option>
-              <option>24mg</option>
-            </select>
-          </label>
-
-          <a class="item item-icon-left assertive" href="#">
-            <i class="icon ion-ios-cart"></i>
-            Agregar
-          </a>
-
+        <div class="item">
+          <h2>{{product.title}}</h2>
+          <p>${{product.price}}</p>
         </div>
+
+        <div class="item item-image">
+          <a href="#/producto/{{product.id}}">
+            <img width="300px" height="300px" ng-src="{{product.featured_src}}">
+          </a>
+        </div>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Tamaño
+          </div>
+          <select>
+            <option value="30">30ml</option>
+            <option value="60">60ml</option>
+            <option value="120">120ml</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Nivel de Nicotina
+          </div>
+          <select>
+            <option value="0">0mg</option>
+            <option value="3">3mg</option>
+            <option value="6">6mg</option>
+            <option value="12">12mg</option>
+            <option value="18">18mg</option>
+            <option value="24">24mg</option>
+          </select>
+        </label>
+
+        <a class="button button-full assertive" href="#">
+          <i class="icon ion-ios-cart"></i>
+          Agregar
+        </a>
+
       </div>
+    </div>
   </ion-content>
 </ion-view>
