@@ -13,6 +13,15 @@ function config($stateProvider, $urlRouterProvider) {
       url: '/producto/:id',
       templateUrl: 'templates/producto.html',
       controller: 'productController'
+    })
+    .state('carrito', {
+      url: '/carrito',
+      templateUrl: 'templates/carrito.html'
+    })
+    .state('settings', {
+      url: '/settings',
+      templateUrl: 'templates/settings.html',
+      controller: 'settingsController'
     });
 
 

@@ -1,4 +1,7 @@
 <ion-view view-title="Vintage Ejuice">
+  <ion-nav-title on-hold="goSettings()">
+    Vintage Ejuice
+  </ion-nav-title>
   <ion-content>
     <div class="col-33 padding-bottom" collection-repeat="product in products | filter:{ categories: 'E-Juice' } ">
       <div class="list card">
@@ -17,31 +20,27 @@
           <div class="input-label">
             Tamaño
           </div>
-          <select>
-            <option value="30">30ml</option>
-            <option value="60">60ml</option>
-            <option value="120">120ml</option>
+          <select ng-model="sizeSelected" ng-options="size.name for size in sizes">
           </select>
+
         </label>
         <label class="item item-input item-select">
           <div class="input-label">
             Nivel de Nicotina
           </div>
-          <select>
-            <option value="0">0mg</option>
-            <option value="3">3mg</option>
-            <option value="6">6mg</option>
-            <option value="12">12mg</option>
-            <option value="18">18mg</option>
-            <option value="24">24mg</option>
+          <select ng-model="nicSelected" ng-options="nicotina.name for nicotina in nicotinas">
           </select>
         </label>
 
-        <a class="button button-full assertive" href="#">
+        <a class="button button-clear button-full button-assertive" href="#">
           <i class="icon ion-ios-cart"></i>
           Agregar
         </a>
-
+        <ngcart-addtocart id="{{product.id}}" name="{{product.title}}"
+                          price="180" quantity="1">
+          <i class="icon ion-ios-cart"></i>
+          Add to Cart
+        </ngcart-addtocart>
       </div>
     </div>
   </ion-content>

@@ -9,7 +9,6 @@ angular
 
     productData.success(function (data) {
         $scope.product = $filter('filter')(data.products, {id: $stateParams.id})[0];
-        console.log($scope.product)
       })
       .error(function (data, status, headers, config) {
         console.log("We have been unable to access the api :-(");
