@@ -1,16 +1,13 @@
 angular
   .module('VintageMenu')
-  .controller("MainController", function ($scope, $state, $stateParams, $http, $ionicLoading, productData) {
+  .controller("MainController", function ($scope, $state, $stateParams, $http, $ionicLoading, productData, StorageService) {
+
 
     $scope.goSettings =function (){
       $state.go('settings');
     };
 
-    $scope.sizes = [
-      {name: '30ml', ml: '30'},
-      {name: '60ml', ml: '60'},
-      {name: '120ml', ml: '120'}
-    ];
+    $scope.sizes = StorageService.getAll();
 
     $scope.nicotinas = [
       {name: '0mg', nic: '0'},

@@ -1,3 +1,4 @@
+<!--
 <div ng-hide="attrs.id">
     <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
 
@@ -16,3 +17,13 @@
         This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
     </mark>
 </div>
+-->
+
+<button ng-disabled="!($parent.sizeSelected && $parent.nicSelected)" ng-show="!inCart()" class="button button-clear button-full button-balanced" ng-click="ngCart.addItem(id, name, price, q)">
+  <i class="icon ion-ios-cart"></i>
+  Agregar
+</button>
+<button ng-show="inCart()" class="button button-clear button-full button-assertive" ng-click="ngCart.removeItemById(id)">
+  <i class="icon ion-close"></i>
+  Quitar
+</button>

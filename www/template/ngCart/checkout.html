@@ -1,5 +1,9 @@
 <div ng-if="service=='http' || service == 'log'">
-    <button class="btn btn-primary" ng-click="checkout()" ng-disabled="!ngCart.getTotalItems()" ng-transclude>Checkout</button>
+  <!--TODO Agregar Controlador para enviar objeto y nombre de comprador-->
+  <button class="button button-clear button-full button-balanced" ng-show="ngCart.totalCost()" ng-click="checkout()">
+    <i class="icon ion-checkmark"></i>
+    Enviar Orden
+  </button>
 </div>
 
 

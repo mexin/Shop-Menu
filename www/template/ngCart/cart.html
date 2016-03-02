@@ -4,15 +4,20 @@
   </div>
   <div class="col col-80">
     <div class="card">
-      <div class="item item-text-wrap balanced-bg ">
-        <h1 class="light"> Total {{ ngCart.totalCost() | currency }}</h1>
+      <div class="item item-text-wrap balanced-bg">
+        <h1 class="light text-center"> Total {{ ngCart.totalCost() | currency }}
+        </h1>
       </div>
+      <ngcart-checkout service="log" settings="{ url:'/checkout' }"></ngcart-checkout>
+    </div>
+    <div class="item item-divider" ng-show="ngCart.totalCost()">
+      Productos Agregados
     </div>
     <ion-list can-swipe="true" show-delete="true">
       <ion-item class="item-button" ng-repeat="item in ngCart.getCart().items track by $index">
         <img ng-src="{{item.image}}">
         <h2>{{ item.getQuantity() | number }} x {{ item.getName() }}</h2>
-        <span>   Precio Unitario: <b>{{ item.getTotal() | currency }}</b></span>
+        <span>   Precio: <b>{{ item.getTotal() | currency }}</b></span>
         <ion-option-button class="button-positive"
                            ng-click="item.setQuantity(1, true)">
           Agregar

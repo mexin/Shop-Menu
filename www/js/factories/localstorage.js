@@ -1,18 +1,27 @@
 angular
   .module('VintageMenu')
-  .factory('$localstorage', ['$window', function($window) {
-    return {
-      set: function(key, value) {
-        $window.localStorage[key] = value;
-      },
-      get: function(key, defaultValue) {
-        return $window.localStorage[key] || defaultValue;
-      },
-      setObject: function(key, value) {
-        $window.localStorage[key] = JSON.stringify(value);
-      },
-      getObject: function(key) {
-        return JSON.parse($window.localStorage[key] || '{}');
-      }
+  .factory("StorageService", function($localStorage) {
+
+    $localStorage = $localStorage.$default({
+      settings: []
+    });
+
+    var _getAll = function () {
+      return $localStorage.settings;
+    };
+
+    var _add = function (setting) {
+      $localStorage.settings.push(setting);
     }
-  }]);
+
+    var _remove = function (setting) {
+      $localStorage.settings.splice($localStorage.settings.indexOf(setting), 1);
+    }
+
+    return {
+      getAll: _getAll,
+      add: _add,
+      remove: _remove
+    };
+
+  });
