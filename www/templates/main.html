@@ -2,6 +2,9 @@
   <ion-nav-title on-hold="goSettings()">
     Vintage Ejuice
   </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <ngcart-summary></ngcart-summary>
+  </ion-nav-buttons>
   <ion-content>
     <div class="col-33 padding-bottom" collection-repeat="product in products | filter:{ categories: 'E-Juice' } ">
       <div class="list card">
@@ -21,7 +24,6 @@
           </div>
           <select ng-model="sizeSelected" ng-options="size.size for size in sizes">
           </select>
-
         </label>
         <label class="item item-input item-select">
           <div class="input-label">

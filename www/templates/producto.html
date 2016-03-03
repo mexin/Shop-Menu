@@ -2,6 +2,9 @@
   <ion-nav-title>
     {{product.title}}
   </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <ngcart-summary></ngcart-summary>
+  </ion-nav-buttons>
   <ion-content>
     <div class="row">
       <div class="col col-33">
@@ -23,35 +26,23 @@
           <div class="item item-divider">
             Ordenar
           </div>
-          <div class="item item-text-wrap">
-            <label class="item item-input item-select">
-              <div class="input-label">
-                Tamaño
-              </div>
-              <select>
-                <option value="30">30ml</option>
-                <option value="60">60ml</option>
-                <option value="120">120ml</option>
-              </select>
-            </label>
-            <label class="item item-input item-select">
-              <div class="input-label">
-                Nivel de Nicotina
-              </div>
-              <select>
-                <option value="0">0mg</option>
-                <option value="3">3mg</option>
-                <option value="6">6mg</option>
-                <option value="12">12mg</option>
-                <option value="18">18mg</option>
-                <option value="24">24mg</option>
-              </select>
-            </label>
+          <div class="item item-input item-select">
+            <div class="input-label">
+              Tamaño
+            </div>
+            <select ng-model="sizeSelected" ng-options="size.size for size in sizes">
+            </select>
           </div>
-          <a class="button button-clear button-full button-assertive" href="#">
-            <i class="icon ion-ios-cart"></i>
-            Agregar
-          </a>
+          <div class="item item-input item-select">
+            <div class="input-label">
+              Nivel de Nicotina
+            </div>
+            <select ng-model="nicSelected" ng-options="nicotina.name for nicotina in nicotinas">
+            </select>
+          </div>
+          <h3 class="text-center" ng-show="sizeSelected">${{sizeSelected.precio}}</h3>
+          <ngcart-addtocart id="{{product.id}}" name="{{product.title}} {{sizeSelected.size}}ml {{nicSelected.name}}"
+                            price="{{sizeSelected.precio}}" quantity="1">
         </div>
       </div>
     </div>

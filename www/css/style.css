@@ -1,1 +1,67 @@
-/* Empty. Add your own CSS if you like */
+.main-bg{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url('../img/bgapp.jpg');
+
+  -webkit-animation-name: scale-up-down;
+  animation-name: scale-up-down;
+  animation-iteration-count:infinite;
+  animation-duration: 80s !important;
+}
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1);
+  padding-top: 5%;
+}
+
+.Aligner-item {
+  max-width: 40%;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+.Aligner-item--fixed {
+  flex: none;
+  max-width: 40%;
+}
+.aligned-bottom{
+  top: 15vh;
+  position: relative;
+}
+@-webkit-keyframes scale-up-down {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes scale-up-down {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

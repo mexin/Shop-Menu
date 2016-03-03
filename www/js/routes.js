@@ -4,6 +4,10 @@ angular
 
 function config($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state('splash' ,{
+      url: '/',
+      templateUrl: 'templates/root.html'
+    })
     .state('main', {
       url: '/main',
       templateUrl: 'templates/main.html',
@@ -24,7 +28,5 @@ function config($stateProvider, $urlRouterProvider) {
       controller: 'settingsController'
     });
 
-
-
-  $urlRouterProvider.otherwise('/main');
+  $urlRouterProvider.otherwise('/');
 }
