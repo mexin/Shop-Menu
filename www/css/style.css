@@ -1,30 +1,26 @@
-.main-bg{
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
+.main-bg.scroll-content{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-image: url('../img/bgapp.jpg');
-
-  -webkit-animation-name: scale-up-down;
-  animation-name: scale-up-down;
-  animation-iteration-count:infinite;
-  animation-duration: 80s !important;
+  -moz-animation: scale-up-down 80s infinite;
+  -webkit-animation: scale-up-down 80s infinite;
+  animation: scale-up-down 80s infinite;
 }
 
 .Aligner {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(1);
   padding-top: 5%;
+  -moz-animation: keep-scale 80s infinite;
+  -webkit-animation: keep-scale 80s infinite;
+  animation: keep-scale 80s infinite;
 }
 
 .Aligner-item {
   max-width: 40%;
+  text-align: center;
 }
 
 .Aligner-item--top {
@@ -44,24 +40,108 @@
 }
 @-webkit-keyframes scale-up-down {
   0% {
+    -moz-transform: scale(1);
     -webkit-transform: scale(1);
+    transform: scale(1);
   }
   50% {
+    -moz-transform: scale(1.5);
     -webkit-transform: scale(1.5);
+    transform: scale(1.5);
   }
   100% {
+    -moz-transform: scale(1);
     -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }
 
 @keyframes scale-up-down {
   0% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
   50% {
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
     transform: scale(1.5);
   }
   100% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes scale-up-down {
+  0% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  100% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes keep-scale {
+  0% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(.666);
+    -webkit-transform: scale(.666);
+    transform: scale(.666);
+  }
+  100% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes keep-scale {
+  0% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(.666);
+    -webkit-transform: scale(.666);
+    transform: scale(.666);
+  }
+  100% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes keep-scale {
+  0% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(.666);
+    -webkit-transform: scale(.666);
+    transform: scale(.666);
+  }
+  100% {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }

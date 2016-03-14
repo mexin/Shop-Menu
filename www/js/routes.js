@@ -20,7 +20,8 @@ function config($stateProvider, $urlRouterProvider) {
     })
     .state('carrito', {
       url: '/carrito',
-      templateUrl: 'templates/carrito.html'
+      templateUrl: 'templates/carrito.html',
+      controller: 'senderController'
     })
     .state('settings', {
       url: '/settings',
