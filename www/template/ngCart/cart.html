@@ -8,17 +8,20 @@
         <h1 class="light text-center"> Total {{ ngCart.totalCost() | currency }}
         </h1>
       </div>
-      <li class="item item-input">
-        <input class="text-center" type="text" placeholder="Nombre" ng-model="$parent.nombreComprador" required/>
-        <input class="text-center" type="text" placeholder="E-mail (Te Enviaremos copia de tu orden)" ng-model="$parent.emailComprador" required/>
-      </li>
-      <button class="button button-clear button-full button-balanced" ng-disabled="!($parent.nombreComprador && $parent.emailComprador)" ng-show="ngCart.totalCost()" ng-click="$parent.submit()">
+      <form name="form" ng-model="form">
+        <li class="item item-input">
+          <input class="text-center" type="text" placeholder="Nombre" ng-model="$parent.nombreComprador" required/>
+          <input class="text-center" type="email" placeholder="E-mail (Te Enviaremos copia de tu orden)"
+                 ng-model="$parent.emailComprador" required/>
+        </li>
+      </form>
+      <button class="button button-clear button-full button-balanced"
+              ng-disabled="!($parent.nombreComprador && $parent.emailComprador)" ng-show="ngCart.totalCost()"
+              ng-click="$parent.submit()">
         <i class="icon ion-checkmark"></i>
         Enviar Orden
       </button>
       <!--<ngcart-checkout service="log" settings="{ url:'/checkout' }"></ngcart-checkout>-->
-    </div>
-
     <div class="item item-divider" ng-show="ngCart.totalCost()">
       Productos Agregados
     </div>

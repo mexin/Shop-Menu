@@ -2,8 +2,16 @@
   <ion-nav-title>
     Configuración
   </ion-nav-title>
-  <ion-content>
-    <ion-header-bar class="bar-balanced">
+  <ion-tabs class="tabs-balanced tabs-icon-top">
+    <ion-tab title="Tamaños/Precio" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
+      <!-- Tab 1 content -->
+    </ion-tab>
+    <ion-tab title="Eliquid Especial" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
+      <!-- Tab 2 content -->
+    </ion-tab>
+  </ion-tabs>
+  <ion-content class="has-subheader">
+    <ion-header-bar class="bar-stable">
       <div class="buttons">
         <button class="button button-icon icon ion-plus"
                 ng-click="showAddChangeDialog('add')"></button>
@@ -22,4 +30,5 @@
       </ion-item>
     </ion-list>
   </ion-content>
+
 </ion-view>
