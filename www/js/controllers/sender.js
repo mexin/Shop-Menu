@@ -1,12 +1,16 @@
 angular
   .module('VintageMenu')
-  .controller('senderController', function ($scope, $rootScope, $http, ngCart) {
+  .controller('senderController', function ($scope, $ionicNavBarDelegate, $rootScope, $http, $ionicPopup, ngCart) {
     $scope.ngCart = ngCart;
 
-    $scope.submit = function () {
+    $scope.showAlert = function (title, message, response) {
+      var alertPopup = $ionicPopup.alert({
+        title: title,
+        template: message + '<br><br>' + ((response === null) ? '' : response.statusText)
+      });
+    };
 
-      console.log($scope.nombreComprador);
-      console.log($scope.emailComprador);
+    $scope.submit = function () {
 
       $scope.orderData = [];
 
@@ -16,7 +20,6 @@ angular
         cart: ngCart.getCart().items
       });
 
-      console.log("enviando...");
 
       var parameters = JSON.stringify({
         nombre: $scope.nombreComprador,
@@ -25,13 +28,17 @@ angular
         total: ngCart.totalCost()
       });
       if ($scope.orderData.length) {
-        //$http.defaults.headers.post["Content-Type"] = "application/json";
         $http.post('http://10.0.1.10:3000/order', parameters)
           .then(function successCallback(response) {
             console.log(response);
-          })
-          .catch(function errorCallback(response) {
+            $scope.showAlert('Enviado Exitoso', 'Tu orden ah sido enviada de manera exitosa.<br><br> ¡Gracias por tu preferencia!', null);
+            $scope.nombreComprador = "";
+            $scope.emailComprador = "";
+            ngCart.empty();
+            $ionicNavBarDelegate.back();
+          }, function errorCallback(response) {
             console.log(response);
+            $scope.showAlert('Error!', 'Tu orden no se pudo enviar, ya que hubo algún problema, vuelve a intentarlo.', response);
           })
       } else {
 

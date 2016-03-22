@@ -14,5 +14,6 @@ angular.module('VintageMenu', ['ionic','ngCart','ngStorage'])
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
+      ngCart.empty();
     });
   });
