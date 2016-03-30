@@ -3,11 +3,12 @@ angular
   .controller("MainController", function ($scope, $state, $stateParams, $http, $ionicLoading, productData, StorageService) {
 
 
-    $scope.goSettings =function (){
+    $scope.goSettings = function () {
       $state.go('settings');
     };
 
     $scope.sizes = StorageService.getAll();
+    $scope.customProducts = StorageService.getAllProducts();
 
     $scope.nicotinas = [
       {name: '0mg', nic: '0'},
@@ -31,7 +32,7 @@ angular
         console.log("We have been unable to access the api :-(");
       })
       .finally(function (data, status) {
-          $ionicLoading.hide();
+        $ionicLoading.hide();
       })
 
   });

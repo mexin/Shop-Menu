@@ -1,0 +1,29 @@
+<ion-modal-view>
+
+  <ion-header-bar class="bar-dark fix-buttons">
+    <ion-button class="button icon-left ion-chevron-left button-clear" ng-click="cancelDialog()">Cancel</ion-button>
+    <h1 class="title">Crear Producto</h1>
+  </ion-header-bar>
+  <ion-content has-bouncing="true">
+    <form name="form" ng-model="form">
+      <ion-list>
+        <li class="item item-input">
+          <span class="input-label">Nombre</span>
+          <input type="text" placeholder="" name="nombre" ng-model="nombre" required/>
+        </li>
+        <li class="item item-input">
+          <span class="input-label">Descripcion</span>
+          <input type="text" placeholder="" name="descripcion" ng-model="descripcion" required/>
+        </li>
+        <ion-button ng-show="action == 'add'" ng-init="saveEmpty(form)" class="button button-full button-positive"
+                    ng-click="addProduct(form)">
+          Agregar
+        </ion-button>
+        <ion-button ng-show="action == 'change'" class="button button-full button-positive" ng-click="editItem(form)">
+          Editar
+        </ion-button>
+      </ion-list>
+    </form>
+  </ion-content>
+
+</ion-modal-view>

@@ -5,43 +5,88 @@
   <ion-nav-buttons side="right">
     <ngcart-summary></ngcart-summary>
   </ion-nav-buttons>
-  <ion-content>
-    <div class="button-bar">
-      <button class="button button-light">Linea Regular</button>
-      <button class="button button-light">Linea Especial</button>
-    </div>
-    <div class="col-33 padding-bottom" collection-repeat="product in products | filter:{ categories: 'E-Juice' } ">
-      <div class="list card">
+  <ion-tabs class="tabs-striped tabs-top tabs-background-dark tabs-color-balanced tabs-icon-top">
+    <ion-tab title="Linea Standard" icon-on="ion-ios-flask-outline" icon-off="ion-ios-flask-outline">
+      <ion-nav-view name="linea-standard">
+        <ion-content>
+          <div class="col-33 padding-bottom"
+               collection-repeat="product in products | filter:{ categories: 'E-Juice' } ">
+            <div class="list card">
 
-        <div class="item">
-          <h2>{{product.title}}</h2>
-        </div>
+              <div class="item">
+                <h2>{{product.title}}</h2>
+              </div>
 
-        <div class="item item-image">
-          <a href="#/producto/{{product.id}}">
-            <img width="300px" height="300px" ng-src="{{product.featured_src}}">
-          </a>
-        </div>
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Tamaño
+              <div class="item item-image">
+                <a href="#/producto/{{product.id}}">
+                  <img width="300px" height="300px" ng-src="{{product.featured_src}}">
+                </a>
+              </div>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Tamaño
+                </div>
+                <select ng-model="sizeSelected" ng-options="size.size for size in sizes">
+                </select>
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Nivel de Nicotina
+                </div>
+                <select ng-model="nicSelected" ng-options="nicotina.name for nicotina in nicotinas">
+                </select>
+              </label>
+              <h3 class="text-center" ng-show="sizeSelected">${{sizeSelected.precio}}</h3>
+              <ngcart-addtocart id="{{product.id}}"
+                                name="{{product.title}} {{sizeSelected.size}}ml {{nicSelected.name}}"
+                                price="{{sizeSelected.precio}}" quantity="1">
+            </div>
+
           </div>
-          <select ng-model="sizeSelected" ng-options="size.size for size in sizes">
-          </select>
-        </label>
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Nivel de Nicotina
           </div>
-          <select ng-model="nicSelected" ng-options="nicotina.name for nicotina in nicotinas">
-          </select>
-        </label>
-        <h3 class="text-center" ng-show="sizeSelected">${{sizeSelected.precio}}</h3>
-        <ngcart-addtocart id="{{product.id}}" name="{{product.title}} {{sizeSelected.size}}ml {{nicSelected.name}}"
-                          price="{{sizeSelected.precio}}" quantity="1">
-      </div>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Linea Especial" icon-on="ion-ios-flask" icon-off="ion-ios-flask">
+      <ion-nav-view name="linea-especial">
+        <ion-content>
+          <div class="col-33 padding-bottom"
+               collection-repeat="product in customProducts">
+            <div class="list card">
 
-    </div>
-    </div>
-  </ion-content>
+              <div class="item">
+                <h2>{{product.title}}</h2>
+              </div>
+
+              <div class="item item-image">
+                <a href="#/producto/{{product.title}}">
+                  <img width="300px" height="300px" ng-src="{{product.featured_src}}">
+                </a>
+              </div>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Tamaño
+                </div>
+                <select ng-model="sizeSelected" ng-options="size.size for size in sizes">
+                </select>
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Nivel de Nicotina
+                </div>
+                <select ng-model="nicSelected" ng-options="nicotina.name for nicotina in nicotinas">
+                </select>
+              </label>
+              <h3 class="text-center" ng-show="sizeSelected">${{sizeSelected.precio}}</h3>
+              <ngcart-addtocart id="{{product.id}}"
+                                name="{{product.title}} {{sizeSelected.size}}ml {{nicSelected.name}}"
+                                price="{{sizeSelected.precio}}" quantity="1">
+            </div>
+
+          </div>
+          </div>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
 </ion-view>

@@ -2,6 +2,7 @@ angular
   .module('VintageMenu')
   .controller("settingsController", function ($scope, $stateParams, $ionicLoading, $localStorage, $ionicModal, StorageService) {
     $scope.settings = StorageService.getAll();
+    $scope.customProducts = StorageService.getAllProducts();
 
     $ionicModal.fromTemplateUrl('templates/settings-modal.html', function(modal) {
       $scope.addDialog = modal;
@@ -26,6 +27,7 @@ angular
         animation: 'slide-in-up'
       });
     };
+
     $scope.addItem = function(form) {
       var newItem = {};
       // Add values from form to object
@@ -42,6 +44,7 @@ angular
       // Search & Destroy item from list
       StorageService.remove(item);
     }
+
 
 
   });
