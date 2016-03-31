@@ -8,7 +8,7 @@
         <ion-header-bar class="bar-stable">
           <div class="buttons">
             <button class="button button-icon icon ion-plus"
-                    ng-click="showAddChangeDialog('add')"></button>
+                    ng-click="showAddChangeDialog('add', 1)"></button>
           </div>
           <h1 class="title">Tamaños y Precios</h1>
         </ion-header-bar>
@@ -16,7 +16,7 @@
           <ion-item ng-repeat="item in settings" class="has-header">
             <h2>{{item.size}}ml</h2>
             <p>${{item.precio}}</p>
-            <ion-option-button class="button-assertive" ng-click="removeItem(item)">
+            <ion-option-button class="button-assertive" ng-click="removeItem(item, 1)">
               Borrar
             </ion-option-button>
           </ion-item>
@@ -28,15 +28,15 @@
         <ion-header-bar class="bar-stable">
           <div class="buttons">
             <button class="button button-icon icon ion-plus"
-                    ng-click="showAddChangeDialog('add')"></button>
+                    ng-click="showAddChangeDialog('add', 2)"></button>
           </div>
           <h1 class="title">Productos</h1>
         </ion-header-bar>
         <ion-list can-swipe="true">
           <ion-item ng-repeat="producto in customProducts" class="has-header">
-            <h2>{{producto.nombre}}ml</h2>
+            <h2>{{producto.nombre}}</h2>
             <p>{{producto.descripcion}}</p>
-            <ion-option-button class="button-assertive" ng-click="removeItem(item)">
+            <ion-option-button class="button-assertive" ng-click="removeItem(item, 2)">
               Borrar
             </ion-option-button>
           </ion-item>

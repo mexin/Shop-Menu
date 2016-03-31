@@ -55,13 +55,11 @@
             <div class="list card">
 
               <div class="item">
-                <h2>{{product.title}}</h2>
+                <h2>{{product.nombre}}</h2>
               </div>
 
-              <div class="item item-image">
-                <a href="#/producto/{{product.title}}">
-                  <img width="300px" height="300px" ng-src="{{product.featured_src}}">
-                </a>
+              <div class="item item-body">
+                <p>{{product.descripcion}}</p>
               </div>
               <label class="item item-input item-select">
                 <div class="input-label">
@@ -78,8 +76,8 @@
                 </select>
               </label>
               <h3 class="text-center" ng-show="sizeSelected">${{sizeSelected.precio}}</h3>
-              <ngcart-addtocart id="{{product.id}}"
-                                name="{{product.title}} {{sizeSelected.size}}ml {{nicSelected.name}}"
+              <ngcart-addtocart id="{{product.nombre}}"
+                                name="{{product.nombre}} {{sizeSelected.size}}ml {{nicSelected.name}}"
                                 price="{{sizeSelected.precio}}" quantity="1">
             </div>
 

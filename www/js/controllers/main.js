@@ -11,12 +11,12 @@ angular
     $scope.customProducts = StorageService.getAllProducts();
 
     $scope.nicotinas = [
-      {name: '0mg', nic: '0'},
-      {name: '3mg', nic: '3'},
-      {name: '6mg', nic: '6'},
-      {name: '12mg', nic: '12'},
-      {name: '18mg', nic: '18'},
-      {name: '24mg', nic: '24'}
+      {name: '0mg', value: '0'},
+      {name: '3mg', value: '3'},
+      {name: '6mg', value: '6'},
+      {name: '12mg', value: '12'},
+      {name: '18mg', value: '18'},
+      {name: '24mg', value: '24'}
     ];
 
     $ionicLoading.show({

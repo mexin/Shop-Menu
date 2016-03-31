@@ -4,47 +4,76 @@ angular
     $scope.settings = StorageService.getAll();
     $scope.customProducts = StorageService.getAllProducts();
 
-    $ionicModal.fromTemplateUrl('templates/settings-modal.html', function(modal) {
-      $scope.addDialog = modal;
+    $ionicModal.fromTemplateUrl('templates/settings-modal.html', function (modal) {
+      $scope.addDialog1 = modal;
     }, {
+      id: 1,
       scope: $scope,
       animation: 'slide-in-up'
     });
 
-    $scope.showAddChangeDialog = function(action) {
+    $ionicModal.fromTemplateUrl('templates/customProduct-modal.html', function (modal) {
+      $scope.addDialog2 = modal;
+    }, {
+      id: 2,
+      scope: $scope,
+      animation: 'slide-in-up'
+    });
+
+    $scope.showAddChangeDialog = function (action, index) {
       $scope.action = action;
-      $scope.addDialog.show();
+      (index == 1) ? $scope.addDialog1.show() : $scope.addDialog2.show()
     };
 
-    $scope.cancelDialog = function() {
+    $scope.cancelDialog = function (index) {
       // Remove dialog
-      $scope.addDialog.remove();
-      // Reload modal template to have cleared form
-      $ionicModal.fromTemplateUrl('templates/settings-modal.html', function(modal) {
-        $scope.addDialog = modal;
-      }, {
-        scope: $scope,
-        animation: 'slide-in-up'
-      });
+      // (index == 1) ? $scope.addDialog1.remove() : $scope.addDialog2.remove()
+
+      if (index == 1) {
+        $scope.addDialog1.remove();
+        $ionicModal.fromTemplateUrl('templates/settings-modal.html', function (modal) {
+          $scope.addDialog1 = modal;
+        }, {
+          id: 1,
+          scope: $scope,
+          animation: 'slide-in-up'
+        });
+      } else {
+        $scope.addDialog2.remove();
+        $ionicModal.fromTemplateUrl('templates/customProduct-modal.html', function (modal) {
+          $scope.addDialog2 = modal;
+        }, {
+          id: 2,
+          scope: $scope,
+          animation: 'slide-in-up'
+        });
+      }
     };
 
-    $scope.addItem = function(form) {
+    $scope.addItem = function (form, index) {
       var newItem = {};
-      // Add values from form to object
-      newItem.size = form.size.$modelValue;
-      newItem.precio = form.precio.$modelValue;
-      // Save new list in scope and factory
-      StorageService.add(newItem);
 
-      // Close dialog
-      $scope.cancelDialog();
+      if (index == 1) {
+        newItem.size = form.size.$modelValue;
+        newItem.precio = form.precio.$modelValue;
+
+        StorageService.add(newItem);
+        $scope.cancelDialog(1);
+
+      } else {
+        newItem.nombre = form.nombre.$modelValue;
+        newItem.descripcion = form.descripcion.$modelValue;
+
+        StorageService.addProduct(newItem);
+        $scope.cancelDialog(2);
+
+      }
     };
 
-    $scope.removeItem = function(item) {
+    $scope.removeItem = function (item, index) {
       // Search & Destroy item from list
-      StorageService.remove(item);
+      (index == 1) ? StorageService.remove(item) : StorageService.removeProduct(item);
     }
-
 
 
   });

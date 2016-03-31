@@ -1,7 +1,7 @@
 <ion-modal-view>
 
     <ion-header-bar class="bar-dark fix-buttons">
-      <ion-button class="button icon-left ion-chevron-left button-clear" ng-click="cancelDialog()">Cancel</ion-button>
+      <ion-button class="button icon-left ion-chevron-left button-clear" ng-click="cancelDialog(1)">Cancel</ion-button>
       <h1 class="title">Agregar Tamaño y Precio</h1>
     </ion-header-bar>
     <ion-content has-bouncing="true">
@@ -16,7 +16,7 @@
             <input type="number" placeholder="" prefix="$" name="precio" ng-model="precio" required/>
           </li>
           <ion-button ng-show="action == 'add'" ng-init="saveEmpty(form)" class="button button-full button-positive"
-                      ng-click="addItem(form)">
+                      ng-click="addItem(form, 1)">
             Agregar
           </ion-button>
           <ion-button ng-show="action == 'change'" class="button button-full button-positive" ng-click="editItem(form)">
